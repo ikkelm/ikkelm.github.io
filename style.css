@@ -12,13 +12,15 @@ body {
 /* Navigation Bar */
 .navbar {
     background-color: #ffffff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     position: fixed;
     width: 100%;
     top: 0;
     left: 0;
     z-index: 1000;
     padding: 1rem 0;
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
 }
 
 .nav-item {
@@ -27,22 +29,13 @@ body {
     text-decoration: none;
     color: #333;
     font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    transition: background-color 0.3s ease-in-out;
 }
 
-.nav-item::after {
-    content: '';
-    position: absolute;
-    left: 50%;
-    bottom: -3px;
-    width: 0;
-    height: 2px;
-    background-color: #3b82f6;
-    transition: width 0.3s ease-in-out, left 0.3s ease-in-out;
-}
-
-.nav-item:hover::after {
-    width: 100%;
-    left: 0;
+.nav-item:hover {
+    background-color: rgba(0, 0, 0, 0.05);
 }
 
 /* Hero Section */
@@ -50,12 +43,14 @@ body {
     background: linear-gradient(to right, #8b5cf6, #3b82f6);
     color: white;
     text-align: center;
-    padding: 100px 20px;
-    min-height: 100vh;
+    padding: 80px 20px;
+    min-height: 50vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    border-radius: 16px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .hero h1 {
@@ -68,6 +63,19 @@ body {
     font-size: 1.2rem;
     max-width: 600px;
     margin-bottom: 20px;
+}
+
+/* Image Showcase Carousel */
+.carousel {
+    display: flex;
+    gap: 16px;
+    overflow: hidden;
+    border-radius: 12px;
+}
+
+.carousel img {
+    border-radius: 12px;
+    transition: transform 0.5s ease-in-out;
 }
 
 /* Responsive Grid Layout */
@@ -94,17 +102,17 @@ body {
     background-color: white;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     padding: 2rem;
-    border-radius: 8px;
+    border-radius: 12px;
     max-width: 500px;
     margin: 2rem auto;
 }
 
 .contact-form input, .contact-form textarea {
     width: 100%;
-    padding: 10px;
+    padding: 12px;
     margin-bottom: 15px;
     border: 1px solid #ccc;
-    border-radius: 5px;
+    border-radius: 8px;
     transition: border-color 0.3s ease-in-out;
 }
 
@@ -116,13 +124,20 @@ body {
 button {
     background-color: #3b82f6;
     color: white;
-    padding: 10px 20px;
+    padding: 12px 24px;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px;
     cursor: pointer;
     transition: background-color 0.3s ease-in-out;
 }
 
 button:hover {
     background-color: #2563eb;
+}
+
+/* Footer */
+footer {
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    padding: 1.5rem;
 }
