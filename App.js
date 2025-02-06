@@ -1,5 +1,5 @@
 import React from "react";
-import "./index.css"; // Import Tailwind styles
+import "style.css"; // Import Tailwind styles
 
 function App() {
   const handleClick = () => {
