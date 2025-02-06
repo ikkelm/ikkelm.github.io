@@ -1,4 +1,4 @@
-"homepage": "https://github.com/ikkelm/ikkelm.github.io",
+"homepage": "https://ikkelm/ikkelm.github.io",
 "scripts": {
   "predeploy": "npm run build",
   "deploy": "gh-pages -d build"
