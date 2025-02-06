@@ -2,14 +2,31 @@
 
 /* Global Styles */
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: 'Inter', sans-serif;
     background-color: #f9fafb;
+    color: #333;
+    margin: 0;
+    padding: 0;
 }
 
 /* Navigation Bar */
+.navbar {
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    padding: 1rem 0;
+}
+
 .nav-item {
     position: relative;
     transition: color 0.3s ease-in-out;
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
 }
 
 .nav-item::after {
@@ -34,10 +51,55 @@ body {
     color: white;
     text-align: center;
     padding: 100px 20px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin-bottom: 20px;
+}
+
+/* Responsive Grid Layout */
+@media (max-width: 768px) {
+    .grid-cols-3 {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    .grid-cols-3 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1025px) {
+    .grid-cols-3 {
+        grid-template-columns: repeat(3, 1fr);
+    }
 }
 
 /* Contact Form */
-form input, form textarea {
+.contact-form {
+    background-color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    border-radius: 8px;
+    max-width: 500px;
+    margin: 2rem auto;
+}
+
+.contact-form input, .contact-form textarea {
     width: 100%;
     padding: 10px;
     margin-bottom: 15px;
@@ -46,7 +108,7 @@ form input, form textarea {
     transition: border-color 0.3s ease-in-out;
 }
 
-form input:focus, form textarea:focus {
+.contact-form input:focus, .contact-form textarea:focus {
     border-color: #3b82f6;
     outline: none;
 }
