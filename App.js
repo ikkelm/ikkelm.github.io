@@ -9,7 +9,7 @@ function App() {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 text-center">
       <h1 className="text-4xl font-bold text-blue-600 mb-4">
-        Welcome to My Website
+        Welcome to My Website YES TES
       </h1>
       <button 
         onClick={handleClick} 
