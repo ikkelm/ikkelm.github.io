@@ -6,6 +6,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI-Powered Backlog Management | SaaS</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .nav-item {
+            position: relative;
+            transition: color 0.3s ease-in-out;
+        }
+        .nav-item::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: -3px;
+            width: 0;
+            height: 2px;
+            background-color: #3b82f6;
+            transition: width 0.3s ease-in-out, left 0.3s ease-in-out;
+        }
+        .nav-item:hover::after {
+            width: 100%;
+            left: 0;
+        }
+    </style>
 </head>
 <body class="bg-gray-50">
     
@@ -18,8 +38,8 @@
             </a>
             <nav>
                 <ul class="flex space-x-6">
-                    <li><a href="about.html" class="text-gray-700 hover:text-blue-500">About</a></li>
-                    <li><a href="contact.html" class="text-gray-700 hover:text-blue-500">Contact</a></li>
+                    <li><a href="about.html" class="text-gray-700 hover:text-blue-500 nav-item">About</a></li>
+                    <li><a href="contact.html" class="text-gray-700 hover:text-blue-500 nav-item">Contact</a></li>
                 </ul>
             </nav>
         </div>
@@ -41,11 +61,11 @@
     <!-- CONTACT PAGE -->
     <section id="contact" class="max-w-5xl mx-auto py-20 text-center">
         <h2 class="text-4xl font-bold text-gray-800">Contact Us</h2>
-        <form class="mt-6">
-            <input type="text" placeholder="Your Name" class="block w-full p-3 mb-4 border rounded">
-            <input type="email" placeholder="Your Email" class="block w-full p-3 mb-4 border rounded">
-            <textarea placeholder="Your Message" class="block w-full p-3 mb-4 border rounded"></textarea>
-            <button type="submit" class="bg-blue-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-blue-700">Send Message</button>
+        <form class="mt-6 bg-white shadow-lg rounded-lg p-6 max-w-lg mx-auto">
+            <input type="text" placeholder="Your Name" class="block w-full p-3 mb-4 border rounded focus:ring-2 focus:ring-blue-500">
+            <input type="email" placeholder="Your Email" class="block w-full p-3 mb-4 border rounded focus:ring-2 focus:ring-blue-500">
+            <textarea placeholder="Your Message" class="block w-full p-3 mb-4 border rounded focus:ring-2 focus:ring-blue-500"></textarea>
+            <button type="submit" class="bg-blue-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-blue-700 transition duration-300">Send Message</button>
         </form>
     </section>
     
