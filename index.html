@@ -13,7 +13,7 @@
     <!-- HEADER -->
     <header class="fixed top-0 left-0 w-full bg-white shadow-lg rounded-b-xl z-50 py-5">
         <div class="max-w-6xl mx-auto flex justify-between items-center px-6">
-            <a href="index.html" class="text-2xl font-bold tracking-wide text-gray-800">MyBrand</a>
+            <a href="index.html" class="text-2xl font-bold tracking-wide text-gray-800">Mikkel Wulff</a>
             <nav>
                 <ul class="flex space-x-6 text-lg">
                     <li><a href="about.html" class="hover:text-gray-500 transition-all duration-300">About</a></li>
@@ -25,9 +25,41 @@
     
     <!-- HERO SECTION -->
     <section class="h-screen flex flex-col justify-center items-center text-center px-6 mt-16">
-        <h1 class="text-6xl font-extrabold tracking-tight text-gray-800">Welcome to My Space</h1>
-        <p class="mt-4 text-lg text-gray-600 max-w-xl">A minimalist approach to showcasing my personal brand and work.</p>
+        <h1 class="text-6xl font-extrabold tracking-tight text-gray-800">Welcome</h1>
+        <p id="info" class="mt-4 text-lg text-gray-600 max-w-xl">Loading current time and weather...</p>
     </section>
+    
+    <script>
+        function updateInfo() {
+            const now = new Date();
+            const weekday = now.toLocaleDateString('en-US', { weekday: 'long' });
+            const time = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+            
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(position => {
+                    const lat = position.coords.latitude;
+                    const lon = position.coords.longitude;
+                    const apiKey = 'YOUR_OPENWEATHERMAP_API_KEY';
+                    const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`;
+                    
+                    fetch(url)
+                        .then(response => response.json())
+                        .then(data => {
+                            const temperature = Math.round(data.main.temp);
+                            document.getElementById('info').textContent = `Today is ${weekday}, ${time}. Current temperature: ${temperature}°C.`;
+                        })
+                        .catch(() => {
+                            document.getElementById('info').textContent = `Today is ${weekday}, ${time}. Weather data unavailable.`;
+                        });
+                }, () => {
+                    document.getElementById('info').textContent = `Today is ${weekday}, ${time}. Location access denied.`;
+                });
+            } else {
+                document.getElementById('info').textContent = `Today is ${weekday}, ${time}. Geolocation not supported.`;
+            }
+        }
+        updateInfo();
+    </script>
     
     <!-- IMAGE SHOWCASE -->
     <section class="max-w-5xl mx-auto py-20">
@@ -55,7 +87,7 @@
     
     <!-- FOOTER -->
     <footer class="bg-gray-900 text-white text-center py-6 mt-10 rounded-t-xl">
-        <p class="text-lg">© 2025 My Personal Brand. All Rights Reserved.</p>
+        <p class="text-lg">© 2025 Mikkel Wulff. All Rights Reserved.</p>
     </footer>
 </body>
 </html>
