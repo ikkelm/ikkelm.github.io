@@ -46,9 +46,9 @@
                         .then(response => response.json())
                         .then(data => {
                             const temperature = Math.round(data.main.temp);
-                            document.getElementById('info').t
-                        })document.getElementById('info').textContent = `Today is ${weekday}, ${time}. Current temperature at ${location}: ${temperature}°C.`;
-
+                            const location = data.name;
+                            document.getElementById('info').textContent = `Today is ${weekday}, ${time}. Current temperature at ${location}: ${temperature}°C.`;
+                        })
                         .catch(() => {
                             document.getElementById('info').textContent = `Today is ${weekday}, ${time}. Weather data unavailable.`;
                         });
