@@ -14,14 +14,31 @@
     <header class="fixed top-0 left-0 w-full bg-white shadow-lg rounded-b-xl z-50 py-5">
         <div class="max-w-6xl mx-auto flex justify-between items-center px-6">
             <a href="index.html" class="text-2xl font-bold tracking-wide text-gray-800">Mikkel Wulff</a>
-            <nav>
-                <ul class="flex space-x-6 text-lg">
-                    <li><a href="about.html" class="hover:text-gray-500 transition-all duration-300">About</a></li>
-                    <li><a href="contact.html" class="hover:text-gray-500 transition-all duration-300">Contact</a></li>
-                </ul>
+            <nav class="hidden md:flex space-x-6 text-lg">
+                <li><a href="about.html" class="hover:text-gray-500 transition-all duration-300">About</a></li>
+                <li><a href="contact.html" class="hover:text-gray-500 transition-all duration-300">Contact</a></li>
             </nav>
+            <!-- Hamburger Menu Button -->
+            <button id="menu-btn" class="md:hidden focus:outline-none">
+                <svg class="w-8 h-8 text-gray-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+            </button>
         </div>
     </header>
+    
+    <!-- FULLSCREEN SLIDE-IN MENU -->
+    <div id="menu" class="fixed top-0 right-0 w-full h-full bg-white shadow-xl transform translate-x-full transition-transform duration-300 ease-in-out flex flex-col items-center justify-center space-y-6 p-8">
+        <button id="close-menu" class="absolute top-5 right-5 text-gray-800 text-3xl">&times;</button>
+        <h2 class="text-3xl font-bold">Contact Me</h2>
+        <p class="text-lg text-gray-600">Feel free to reach out with any questions.</p>
+        <form class="mt-4 bg-gray-100 p-6 rounded-lg shadow-lg max-w-lg w-full">
+            <input type="text" placeholder="Your Name" class="block w-full p-3 mb-4 border rounded focus:ring-2 focus:ring-blue-500">
+            <input type="email" placeholder="Your Email" class="block w-full p-3 mb-4 border rounded focus:ring-2 focus:ring-blue-500">
+            <textarea placeholder="Your Message" class="block w-full p-3 mb-4 border rounded focus:ring-2 focus:ring-blue-500"></textarea>
+            <button type="submit" class="bg-blue-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-blue-700 transition duration-300">Send Message</button>
+        </form>
+    </div>
     
     <!-- HERO SECTION -->
     <section class="h-screen flex flex-col justify-center items-center text-center px-6 mt-16">
@@ -39,7 +56,7 @@
                 navigator.geolocation.getCurrentPosition(position => {
                     const lat = position.coords.latitude;
                     const lon = position.coords.longitude;
-                    const apiKey = '1a47584b2b0a71c52ef9dc41e338a955';
+                    const apiKey = 'YOUR_OPENWEATHERMAP_API_KEY';
                     const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`;
                     
                     fetch(url)
@@ -60,30 +77,19 @@
             }
         }
         updateInfo();
-    </script>
-    
-    <!-- IMAGE SHOWCASE -->
-    <!--<section class="max-w-5xl mx-auto py-20">
-        <h2 class="text-4xl font-bold text-center text-gray-800">Featured Work</h2>
-        <div class="relative mt-10 overflow-hidden rounded-xl shadow-lg">
-            <div class="carousel flex space-x-6 w-full h-64 transition-transform duration-700 ease-in-out">
-                <img src="img/image1.jpg" class="w-1/3 object-cover rounded-xl shadow-md">
-                <img src="img/image2.jpg" class="w-1/3 object-cover rounded-xl shadow-md">
-                <img src="img/image3.jpg" class="w-1/3 object-cover rounded-xl shadow-md">
-                <img src="img/image4.jpg" class="w-1/3 object-cover rounded-xl shadow-md">
-                <img src="img/image5.jpg" class="w-1/3 object-cover rounded-xl shadow-md">
-            </div>
-        </div>
-    </section>
--->
-    <script>
-        let index = 0;
-        function autoScroll() {
-            const images = document.querySelector(".carousel");
-            index = (index + 1) % 5;
-            images.style.transform = `translateX(-${index * 33.33}%)`;
-        }
-        setInterval(autoScroll, 3000);
+
+        // Hamburger Menu Functionality
+        const menuBtn = document.getElementById('menu-btn');
+        const menu = document.getElementById('menu');
+        const closeMenu = document.getElementById('close-menu');
+        
+        menuBtn.addEventListener('click', () => {
+            menu.classList.remove('translate-x-full');
+        });
+        
+        closeMenu.addEventListener('click', () => {
+            menu.classList.add('translate-x-full');
+        });
     </script>
     
     <!-- FOOTER -->
