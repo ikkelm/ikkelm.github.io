@@ -39,15 +39,16 @@
                 navigator.geolocation.getCurrentPosition(position => {
                     const lat = position.coords.latitude;
                     const lon = position.coords.longitude;
-                    const apiKey = '';
+                    const apiKey = '1a47584b2b0a71c52ef9dc41e338a955';
                     const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`;
                     
                     fetch(url)
                         .then(response => response.json())
                         .then(data => {
                             const temperature = Math.round(data.main.temp);
-                            document.getElementById('info').textContent = `Today is ${weekday}, ${time}. Current temperature: ${temperature}°C.`;
-                        })
+                            document.getElementById('info').t
+                        })document.getElementById('info').textContent = `Today is ${weekday}, ${time}. Current temperature at ${location}: ${temperature}°C.`;
+
                         .catch(() => {
                             document.getElementById('info').textContent = `Today is ${weekday}, ${time}. Weather data unavailable.`;
                         });
